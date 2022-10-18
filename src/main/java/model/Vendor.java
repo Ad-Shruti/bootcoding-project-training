@@ -1,12 +1,14 @@
-package main;
+package model;
 
-public class Customer {
-
+public class Vendor {
     private String name;
     private String address;
+    private String emailId;
     private String city;
     private String state;
-    private String emailId;
+    private String category;
+    private double rating;
+    private boolean pureVeg;
     private long phoneNo;
 
     public String getName() {
@@ -25,6 +27,14 @@ public class Customer {
         this.address = address;
     }
 
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
     public String getCity() {
         return city;
     }
@@ -41,12 +51,28 @@ public class Customer {
         this.state = state;
     }
 
-    public String getEmailId() {
-        return emailId;
+    public String getCategory() {
+        return category;
     }
 
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public boolean isPureVeg() {
+        return pureVeg;
+    }
+
+    public void setPureVeg(boolean pureVeg) {
+        this.pureVeg = pureVeg;
     }
 
     public long getPhoneNo() {

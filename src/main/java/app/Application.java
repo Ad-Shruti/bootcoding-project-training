@@ -1,9 +1,11 @@
-package main.app;
+package app;
 
-import main.Customer;
-import main.Order;
-import main.OrderMenuItem;
-import main.Vendor;
+
+import dao.CustomerDao;
+import model.Customer;
+import model.Order;
+import model.OrderMenuItem;
+import model.Vendor;
 
 import java.util.Date;
 
@@ -26,7 +28,7 @@ public class Application {
         vendor.setName("Dominos");
         vendor.setPureVeg(true);
         vendor.setPhoneNo(8798968698L);
-        System.out.println("Vendor name :" + vendor.getName());
+        System.out.println("model.Vendor name :" + vendor.getName());
         System.out.println("PURE VEG : "+ vendor.isPureVeg());
 
 
@@ -34,7 +36,7 @@ public class Application {
         order.setCustomer(customer);
         order.setOrderDate(new Date());
         System.out.println("Customer : " + order.getCustomer());
-        System.out.println("Order Date : " + order.getOrderDate());
+        System.out.println("model.Order Date : " + order.getOrderDate());
 
 
         OrderMenuItem orderMenuItem = new OrderMenuItem();
@@ -44,6 +46,9 @@ public class Application {
         System.out.println("Menu Item : " + orderMenuItem.getMenuItem());
         System.out.println("Price : " + orderMenuItem.getPrice());
         System.out.println("Quantity : " + orderMenuItem.getQuantity());
+
+        CustomerDao customerDao = new CustomerDao();
+        customerDao.createTable();
 
     }
 

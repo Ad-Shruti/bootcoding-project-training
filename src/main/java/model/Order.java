@@ -1,4 +1,7 @@
-package main;
+package model;
+
+import model.OrderMenuItem;
+import model.Vendor;
 
 import java.util.Date;
 import java.util.List;
