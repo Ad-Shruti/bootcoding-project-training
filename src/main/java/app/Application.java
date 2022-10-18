@@ -1,10 +1,7 @@
 package app;
 
 
-import dao.CustomerDao;
-import dao.OrderDao;
-import dao.OrderMenuItemDao;
-import dao.VendorDao;
+import dao.*;
 import model.Customer;
 import model.Order;
 import model.OrderMenuItem;
@@ -61,6 +58,9 @@ public class Application {
 
         OrderMenuItemDao orderMenuItemDao = new OrderMenuItemDao();
         orderMenuItemDao.createTable();
+
+        MenuItemDao menuItemDao = new MenuItemDao();
+        menuItemDao.createTable();
 
     }
 
