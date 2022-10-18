@@ -15,7 +15,7 @@ public class CustomerDao {
             Class.forName("org.postgresql.Driver");
             //2 establish connection with local db
             Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres",
-                    "shruti","Shruti*123");
+                    "postgres","Shruti*123");
             //create statement object
             Statement statement = connection.createStatement();
 
