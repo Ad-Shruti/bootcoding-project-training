@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class CustomerDao {
 
-    public static final String TABLE_NAME = "customer";
+    public static final String TABLE_NAME = "app_customer";
 
     public void createTable(){
         try {
@@ -21,6 +21,18 @@ public class CustomerDao {
 
             //4 Execute query(statement)
             String sql = "Select * from " + TABLE_NAME;
+
+            String query = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME
+                    + "(id bigint NOT NULL,"
+                    + "name text,"
+                    + "phone_number bigint,"
+                    + "address text,"
+                    + "city text,"
+                    + "CONSTRAINT app_customer_pk PRIMARY KEY(id))";
+
+            System.out.println("Create Table Query : " + query);
+
+            statement.executeUpdate(query);
             ResultSet resultSet = statement.executeQuery(sql);
 
             //5 traverse ResultSet(data)
