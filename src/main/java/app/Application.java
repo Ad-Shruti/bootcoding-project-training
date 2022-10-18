@@ -2,6 +2,9 @@ package app;
 
 
 import dao.CustomerDao;
+import dao.OrderDao;
+import dao.OrderMenuItemDao;
+import dao.VendorDao;
 import model.Customer;
 import model.Order;
 import model.OrderMenuItem;
@@ -49,6 +52,15 @@ public class Application {
 
         CustomerDao customerDao = new CustomerDao();
         customerDao.createTable();
+
+        VendorDao vendorDao = new VendorDao();
+        vendorDao.createTable();
+
+        OrderDao orderDao = new OrderDao();
+        orderDao.createTable();
+
+        OrderMenuItemDao orderMenuItemDao = new OrderMenuItemDao();
+        orderMenuItemDao.createTable();
 
     }
 
