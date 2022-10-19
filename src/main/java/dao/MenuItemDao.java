@@ -7,15 +7,21 @@ import java.sql.Statement;
 
 public class MenuItemDao {
     public static final String TABLE_NAME = "app_menu_item_dao";
+    private DaoService daoService;
+    public MenuItemDao(){
+        // inside constructor
+        daoService = new DaoService();
+    }
 
     public void createTable(){
         try {
             //1 load jdbc driver
-            Class.forName("org.postgresql.Driver");
-            //2 establish connection with local db
-            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres",
-                    "postgres","Shruti*123");
+//            Class.forName("org.postgresql.Driver");
+//            //2 establish connection with local db
+//            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres",
+//                    "postgres","Shruti*123");
             //create statement object
+            Connection connection = daoService.getConnection();
             Statement statement = connection.createStatement();
 
             //4 Execute query(statement)
