@@ -1,20 +1,40 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import model.Customer;
+
+import java.sql.*;
 
 public class CustomerDao {
 
     public static final String TABLE_NAME = "app_customer";
     private DaoService daoService;
-    public CustomerDao(){
+
+    public CustomerDao() {
         // inside constructor
         daoService = new DaoService();
     }
 
-    public void createTable(){
+    public void insertCustomer(Customer customer) {
+        try {
+            Connection connection = daoService.getConnection();
+            String sql = "INSERT INTO " + TABLE_NAME
+                    + " VALUES( ?,?,?,?,?)";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setLong(1, customer.getId());
+            preparedStatement.setString(2, customer.getName());
+            preparedStatement.setLong(3, customer.getPhoneNo());
+            preparedStatement.setString(4, customer.getAddress());
+            preparedStatement.setString(5, customer.getCity());
+            //preparedStatement.setString(6,customer.getEmailId());
+            preparedStatement.executeUpdate();
+            connection.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void createTable() {
         try {
             //1 load jdbc driver
 //            Class.forName("org.postgresql.Driver");
@@ -43,7 +63,7 @@ public class CustomerDao {
             ResultSet resultSet = statement.executeQuery(sql);
 
             //5 traverse ResultSet(data)
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 //columnlabel is whatever u write in database column
                 System.out.println("=" + resultSet.getString("name"));
                 System.out.println("=" + resultSet.getString("address"));
@@ -51,7 +71,7 @@ public class CustomerDao {
                 System.out.println("=" + resultSet.getString("city"));
             }
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
